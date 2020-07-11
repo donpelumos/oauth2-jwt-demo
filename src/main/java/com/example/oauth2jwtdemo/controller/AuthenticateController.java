@@ -39,8 +39,8 @@ public class AuthenticateController {
             throw new Exception("Incorrect username or password", badCredentialsException);
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
-        //final String token = jwtTokenUtil.generateToken(userDetails);
-        final String token = jwtTokenUtil.generateVerifiedToken(userDetails);
+        final String token = jwtTokenUtil.generateToken(userDetails);
+        //final String token = jwtTokenUtil.generateVerifiedToken(userDetails);
         return ResponseEntity.ok(new AuthenticationResponse(token));
     }
 
