@@ -21,7 +21,8 @@ import java.util.function.Function;
 public class JwtTokenUtil {
     @Value("${jwt.signing.key:secret}")
     private String SECRET_KEY;
-    private final long JWT_TOKEN_VALIDITY = 15 * 60;//15 Minutes
+    @Value("${token.validity:900}")
+    private long JWT_TOKEN_VALIDITY;//15 Minutes (900 seconds)
 
     public String extractUserName(String token){
         return extractClaim(token, Claims::getSubject);
